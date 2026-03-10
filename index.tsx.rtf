@@ -1,0 +1,109 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2868
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 import React from "react";\
+import \{ Star \} from "lucide-react";\
+\
+const deals = [\
+  \{\
+    name: "Creatine Monohydrate",\
+    product: "500g Creatine",\
+    retailer: "MyProtein",\
+    price: 12.99,\
+    rating: 4.7,\
+    image:\
+      "https://images.unsplash.com/photo-1579722821273-0f6c7d44362f?w=400"\
+  \},\
+  \{\
+    name: "Whey Protein",\
+    product: "Impact Whey 1kg",\
+    retailer: "Bulk",\
+    price: 24.99,\
+    rating: 4.6,\
+    image:\
+      "https://images.unsplash.com/photo-1622484212850-eb596d769edc?w=400"\
+  \},\
+  \{\
+    name: "Pre Workout",\
+    product: "C4 Original",\
+    retailer: "Amazon",\
+    price: 21.49,\
+    rating: 4.5,\
+    image:\
+      "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=400"\
+  \}\
+];\
+\
+export default function App() \{\
+  return (\
+    <div style=\{\{ fontFamily: "Arial", background: "#0f172a", minHeight: "100vh", color: "white" \}\}>\
+      \
+      \{/* HEADER */\}\
+      <header style=\{\{display:"flex",alignItems:"center",justifyContent:"space-between",padding:"20px 40px"\}\}>\
+        <div style=\{\{display:"flex",alignItems:"center",gap:"10px"\}\}>\
+          <img src="/logo.png" style=\{\{height:"40px"\}\} />\
+          <h2>SUP-MARINE</h2>\
+        </div>\
+\
+        <button style=\{\{background:"#007A33",border:"none",padding:"10px 16px",borderRadius:"6px",color:"white"\}\}>\
+          Ping the Sonar\
+        </button>\
+      </header>\
+\
+      \{/* HERO */\}\
+      <section style=\{\{padding:"40px",textAlign:"center"\}\}>\
+        <h1 style=\{\{fontSize:"42px",marginBottom:"10px"\}\}>\
+          We search out and destroy overpriced supplements\
+        </h1>\
+\
+        <p style=\{\{opacity:0.8\}\}>\
+          Find the best supplements for your goal and see the cheapest places to buy them online.\
+        </p>\
+      </section>\
+\
+      \{/* DEALS */\}\
+      <section style=\{\{padding:"40px"\}\}>\
+        <h2 style=\{\{marginBottom:"20px"\}\}>Targets Acquired</h2>\
+\
+        <div style=\{\{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(250px,1fr))",gap:"20px"\}\}>\
+\
+          \{deals.map((deal,index)=>(\
+            <div key=\{index\} style=\{\{background:"white",color:"#111",borderRadius:"10px",padding:"20px"\}\}>\
+\
+              <img src=\{deal.image\} style=\{\{width:"100%",borderRadius:"8px"\}\}/>\
+\
+              <h3>\{deal.name\}</h3>\
+\
+              <p>\{deal.product\}</p>\
+\
+              <h2>\'a3\{deal.price\}</h2>\
+\
+              <p style=\{\{display:"flex",alignItems:"center",gap:"5px"\}\}>\
+                <Star size=\{16\}/> \{deal.rating\}\
+              </p>\
+\
+              <button style=\{\{\
+                marginTop:"10px",\
+                background:"#007A33",\
+                border:"none",\
+                padding:"10px 14px",\
+                borderRadius:"6px",\
+                color:"white",\
+                width:"100%"\
+              \}\}>\
+                Deploy Torpedo\
+              </button>\
+\
+            </div>\
+          ))\}\
+\
+        </div>\
+      </section>\
+\
+    </div>\
+  );\
+\}}
