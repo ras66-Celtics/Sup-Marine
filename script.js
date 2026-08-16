@@ -63,7 +63,18 @@ function renderProducts(items) {
       card.className = 'product-card';
 
       card.innerHTML = `
-        <div class="badge">${badge}</div>
+    <div class="price-row">
+  <strong>£${Number(item.current_price).toFixed(2)}</strong>
+  <span>Current price</span>
+</div>
+
+${
+  item.is_cheapest_retailer && item.saving_vs_next_cheapest !== null
+    ? `<p class="saving-note">
+         Save £${Number(item.saving_vs_next_cheapest).toFixed(2)} vs next cheapest
+       </p>`
+    : ''
+}
 
         <div class="product-art">
   ${
