@@ -82,16 +82,6 @@ function renderProducts(items) {
 </p>
 
 <div class="brand-row">
-  ${
-    item.brand_logo_url
-      ? `<img
-           src="${item.brand_logo_url}"
-           alt="${item.brand}"
-           class="brand-logo"
-         >`
-      : ''
-  }
-
   <span>${item.brand}</span>
 </div>
 
