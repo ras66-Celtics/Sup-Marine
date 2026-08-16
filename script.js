@@ -1,5 +1,5 @@
-const SUPABASE_URL = https://psnowpjxhlghkclbimpy.supabase.co;
-const SUPABASE_KEY = sb_publishable_wWNQq2WHj1wILFXjFlXozQ_61uJyep7;
+const SUPABASE_URL = 'https://psnowpjxhlghkclbimpy.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_wWNQq2WHj1wILFXjFlXozQ_61uJyep7';
 
 const searchForm = document.getElementById('searchForm');
 const searchInput = document.getElementById('searchInput');
