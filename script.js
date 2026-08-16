@@ -90,22 +90,40 @@ function renderProducts(items) {
             <span>Current price</span>
           </div>
 
-          <div class="price-history">
-            <p>
-              Lowest recorded:
-              <strong>£${Number(item.lowest_recorded_price).toFixed(2)}</strong>
-            </p>
+        <div class="price-history">
+  ${
+    item.price_per_100g !== null
+      ? `<p>
+           Price per 100g:
+           <strong>£${Number(item.price_per_100g).toFixed(2)}</strong>
+         </p>`
+      : ''
+  }
 
-            <p>
-              Highest recorded:
-              <strong>£${Number(item.highest_recorded_price).toFixed(2)}</strong>
-            </p>
+  ${
+    item.price_per_serving !== null
+      ? `<p>
+           Price per serving:
+           <strong>£${Number(item.price_per_serving).toFixed(2)}</strong>
+         </p>`
+      : ''
+  }
 
-            <p>
-              Average:
-              <strong>£${Number(item.average_recorded_price).toFixed(2)}</strong>
-            </p>
-          </div>
+  <p>
+    Lowest recorded:
+    <strong>£${Number(item.lowest_recorded_price).toFixed(2)}</strong>
+  </p>
+
+  <p>
+    Highest recorded:
+    <strong>£${Number(item.highest_recorded_price).toFixed(2)}</strong>
+  </p>
+
+  <p>
+    Average:
+    <strong>£${Number(item.average_recorded_price).toFixed(2)}</strong>
+  </p>
+</div>
 
           ${
             item.product_url
