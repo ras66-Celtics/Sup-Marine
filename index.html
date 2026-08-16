@@ -7,121 +7,270 @@
   <title>Sup-Marine | Supplement Search</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-  <header class="topbar">
-    <a class="brand" href="#top" aria-label="Sup-Marine home">
-      <<img src="sup-marine-logo.png" alt="Sup-Marine Supplement Search">
-    </a>
-    <nav>
-      <a href="#deals">Top Deals</a>
-      <a href="#categories">Categories</a>
-      <a href="#how">How it works</a>
-    </nav>
-  </header>
 
-  <main id="top">
-    <section class="hero">
-      <div class="hero-inner">
-        <span class="eyebrow">SUPPLEMENT PRICE COMPARISON</span>
-        <h1>Stop overpaying for supplements.</h1>
-        <p class="tagline">We search out and destroy overpriced supplements.</p>
+<header class="topbar">
+  <a class="brand" href="#top">
+    <img src="sup-marine-logo.png" alt="Sup-Marine Supplement Search">
+  </a>
 
-        <form class="search-wrap" id="searchForm">
-          <input id="searchInput" type="search" placeholder="Search whey, creatine, pre-workout..." autocomplete="off">
-          <button type="submit">Ping the sonar</button>
-        </form>
-        <p class="microcopy">Demo search for now — live retailer pricing comes next.</p>
-      </div>
-    </section>
+  <nav>
+    <a href="#deals">Top Deals</a>
+    <a href="#categories">Categories</a>
+    <a href="#how">How it works</a>
+  </nav>
+</header>
 
-    <section class="categories section" id="categories">
-      <div class="section-heading">
-        <div>
-          <span class="eyebrow">QUICK SCAN</span>
-          <h2>Popular categories</h2>
-        </div>
-      </div>
-      <div class="category-grid">
-        <button class="category-card" data-search="whey protein"><span>01</span><strong>Protein</strong><small>Whey, isolate & blends</small></button>
-        <button class="category-card" data-search="creatine"><span>02</span><strong>Creatine</strong><small>Monohydrate & more</small></button>
-        <button class="category-card" data-search="pre-workout"><span>03</span><strong>Pre-workout</strong><small>Energy & performance</small></button>
-        <button class="category-card" data-search="mass gainer"><span>04</span><strong>Mass Gainer</strong><small>High-calorie formulas</small></button>
-      </div>
-    </section>
+<main id="top">
 
-    <section class="section" id="deals">
-      <div class="section-heading">
-        <div>
-          <span class="eyebrow">TARGETS ACQUIRED</span>
-          <h2>Top deals</h2>
-        </div>
-        <span class="updated">Example data</span>
-      </div>
+  <section class="hero">
 
-      <div class="product-grid" id="productGrid">
-        <article class="product-card" data-keywords="whey protein">
-          <div class="badge">Cheapest</div>
-          <div class="product-art">WHEY</div>
-          <div class="product-copy">
-            <p class="product-type">Whey Protein</p>
-            <h3>Impact Whey Protein</h3>
-            <p class="retailer">MyProtein</p>
-            <div class="price-row"><strong>£38.00</strong><span>Example price</span></div>
-            <button class="deal-btn" type="button">View deal</button>
-          </div>
-        </article>
+    <div class="hero-inner">
 
-        <article class="product-card" data-keywords="creatine monohydrate">
-          <div class="badge">Best value</div>
-          <div class="product-art">CREA</div>
-          <div class="product-copy">
-            <p class="product-type">Creatine</p>
-            <h3>Creatine Monohydrate</h3>
-            <p class="retailer">Bulk</p>
-            <div class="price-row"><strong>£14.99</strong><span>Example price</span></div>
-            <button class="deal-btn" type="button">View deal</button>
-          </div>
-        </article>
+      <span class="eyebrow">
+        SUPPLEMENT PRICE COMPARISON
+      </span>
 
-        <article class="product-card" data-keywords="pre-workout energy">
-          <div class="badge">Popular</div>
-          <div class="product-art">PRE</div>
-          <div class="product-copy">
-            <p class="product-type">Pre-workout</p>
-            <h3>Pre-Workout Blend</h3>
-            <p class="retailer">Amazon</p>
-            <div class="price-row"><strong>£21.95</strong><span>Example price</span></div>
-            <button class="deal-btn" type="button">View deal</button>
-          </div>
-        </article>
-      </div>
+      <h1>
+        Stop overpaying for supplements.
+      </h1>
 
-      <p id="noResults" class="no-results" hidden>No demo products match that search yet. Live search is the next phase.</p>
-    </section>
+      <p class="tagline">
+        We search out and destroy overpriced supplements.
+      </p>
 
-    <section class="how section" id="how">
-      <div class="section-heading">
-        <div>
-          <span class="eyebrow">HOW IT WORKS</span>
-          <h2>One search. Better prices.</h2>
-        </div>
-      </div>
-      <div class="steps">
-        <div><span>1</span><h3>Search</h3><p>Tell Sup-Marine what supplement you're hunting for.</p></div>
-        <div><span>2</span><h3>Compare</h3><p>Compare retailers, pack sizes and prices in one place.</p></div>
-        <div><span>3</span><h3>Save</h3><p>Head to the retailer offering the best deal for you.</p></div>
-      </div>
-    </section>
-  </main>
+      <form class="search-wrap" id="searchForm">
 
-  <footer>
-    <div>
-      <strong>SUP-MARINE</strong>
-      <p>Supplement Search</p>
+        <input
+          id="searchInput"
+          type="search"
+          placeholder="Search whey, creatine, pre-workout..."
+          autocomplete="off"
+        >
+
+        <button type="submit">
+          Ping the sonar
+        </button>
+
+      </form>
+
+      <p class="microcopy">
+        Search live Sup-Marine price records.
+      </p>
+
     </div>
-    <p>Prices shown on this demo page are examples only.</p>
-  </footer>
 
-  <script src="script.js"></script>
+  </section>
+
+
+  <section
+    class="categories section"
+    id="categories"
+  >
+
+    <div class="section-heading">
+
+      <div>
+
+        <span class="eyebrow">
+          QUICK SCAN
+        </span>
+
+        <h2>
+          Popular categories
+        </h2>
+
+      </div>
+
+    </div>
+
+    <div class="category-grid">
+
+      <button
+        class="category-card"
+        data-search="protein"
+      >
+        <span>01</span>
+        <strong>Protein</strong>
+        <small>Whey, isolate & blends</small>
+      </button>
+
+      <button
+        class="category-card"
+        data-search="creatine"
+      >
+        <span>02</span>
+        <strong>Creatine</strong>
+        <small>Monohydrate & more</small>
+      </button>
+
+      <button
+        class="category-card"
+        data-search="pre-workout"
+      >
+        <span>03</span>
+        <strong>Pre-workout</strong>
+        <small>Energy & performance</small>
+      </button>
+
+      <button
+        class="category-card"
+        data-search="mass gainer"
+      >
+        <span>04</span>
+        <strong>Mass Gainer</strong>
+        <small>High-calorie formulas</small>
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <section
+    class="section"
+    id="deals"
+  >
+
+    <div class="section-heading">
+
+      <div>
+
+        <span class="eyebrow">
+          TARGETS ACQUIRED
+        </span>
+
+        <h2>
+          Top deals
+        </h2>
+
+      </div>
+
+      <span class="updated">
+        Live price records
+      </span>
+
+    </div>
+
+
+    <!-- Supabase products appear here -->
+    <div
+      class="product-grid"
+      id="productGrid"
+    >
+      <p>Scanning for prices...</p>
+    </div>
+
+
+    <p
+      id="noResults"
+      class="no-results"
+      hidden
+    >
+      No prices found.
+    </p>
+
+  </section>
+
+
+  <section
+    class="how section"
+    id="how"
+  >
+
+    <div class="section-heading">
+
+      <div>
+
+        <span class="eyebrow">
+          HOW IT WORKS
+        </span>
+
+        <h2>
+          One search. Better prices.
+        </h2>
+
+      </div>
+
+    </div>
+
+
+    <div class="steps">
+
+      <div>
+
+        <span>1</span>
+
+        <h3>
+          Search
+        </h3>
+
+        <p>
+          Tell Sup-Marine what supplement you're hunting for.
+        </p>
+
+      </div>
+
+
+      <div>
+
+        <span>2</span>
+
+        <h3>
+          Compare
+        </h3>
+
+        <p>
+          Compare retailers, pack sizes and recorded prices in one place.
+        </p>
+
+      </div>
+
+
+      <div>
+
+        <span>3</span>
+
+        <h3>
+          Save
+        </h3>
+
+        <p>
+          Head to the retailer offering the best deal.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+</main>
+
+
+<footer>
+
+  <div>
+
+    <strong>
+      SUP-MARINE
+    </strong>
+
+    <p>
+      Supplement Search
+    </p>
+
+  </div>
+
+  <p>
+    Price history is based on prices recorded by Sup-Marine.
+  </p>
+
+</footer>
+
+
+<script src="script.js"></script>
+
 </body>
 </html>
