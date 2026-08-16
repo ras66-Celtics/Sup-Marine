@@ -1,0 +1,52 @@
+
+body {
+  font-family: Arial, sans-serif;
+  background: #0c1a26;
+  color: white;
+  margin: 0;
+  text-align: center;
+}
+
+header {
+  background: #061019;
+  padding: 40px 20px;
+}
+
+h1 {
+  letter-spacing: 4px;
+}
+
+.tagline {
+  color: #3bc9db;
+}
+
+.search {
+  margin: 40px;
+}
+
+input {
+  padding: 12px;
+  width: 260px;
+  border-radius: 6px;
+  border: none;
+}
+
+button {
+  padding: 12px 18px;
+  background: #3bc9db;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+#results {
+  padding: 40px;
+}
+
+.result {
+  background: #132635;
+  padding: 20px;
+  margin: 10px auto;
+  max-width: 400px;
+  border-radius: 8px;
+}
