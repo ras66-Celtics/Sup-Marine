@@ -66,8 +66,16 @@ function renderProducts(items) {
         <div class="badge">${badge}</div>
 
         <div class="product-art">
-          ${item.category ? item.category.substring(0, 4).toUpperCase() : 'SUP'}
-        </div>
+  ${
+    item.product_image_url
+      ? `<img
+           src="${item.product_image_url}"
+           alt="${item.brand} ${item.name}"
+           class="product-image"
+         >`
+      : `${item.category ? item.category.substring(0, 4).toUpperCase() : 'SUP'}`
+  }
+</div>
 
         <div class="product-copy">
 
