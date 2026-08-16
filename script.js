@@ -77,15 +77,27 @@ function renderProducts(items) {
   }
 </div>
 
-        <div class="product-copy">
+   <p class="product-type">
+  ${item.category || ''}
+</p>
 
-          <p class="product-type">
-            ${item.category || ''}
-          </p>
+<div class="brand-row">
+  ${
+    item.brand_logo_url
+      ? `<img
+           src="${item.brand_logo_url}"
+           alt="${item.brand}"
+           class="brand-logo"
+         >`
+      : ''
+  }
 
-          <h3>
-            ${item.brand} ${item.name}
-          </h3>
+  <span>${item.brand}</span>
+</div>
+
+<h3>
+  ${item.name}
+</h3>
 
           <p class="retailer">
             ${item.retailer}
