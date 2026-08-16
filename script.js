@@ -1,37 +1,164 @@
+const SUPABASE_URL = https://psnowpjxhlghkclbimpy.supabase.co;
+const SUPABASE_KEY = sb_publishable_wWNQq2WHj1wILFXjFlXozQ_61uJyep7;
 
 const searchForm = document.getElementById('searchForm');
 const searchInput = document.getElementById('searchInput');
-const cards = [...document.querySelectorAll('.product-card')];
+const productGrid = document.getElementById('productGrid');
 const noResults = document.getElementById('noResults');
 
-function runSearch(term) {
-  const q = term.trim().toLowerCase();
-  let visible = 0;
-  cards.forEach(card => {
-    const haystack = (card.dataset.keywords + ' ' + card.innerText).toLowerCase();
-    const show = !q || haystack.includes(q) || q.split(/\s+/).some(word => haystack.includes(word));
-    card.style.display = show ? '' : 'none';
-    if (show) visible++;
-  });
-  noResults.hidden = visible !== 0;
-  document.getElementById('deals').scrollIntoView({ behavior: 'smooth', block: 'start' });
+let products = [];
+
+async function loadProducts() {
+  productGrid.innerHTML = '<p>Scanning for prices...</p>';
+
+  try {
+    const response = await fetch(
+      `${SUPABASE_URL}/rest/v1/listing_price_summary?select=*`,
+      {
+        headers: {
+          apikey: SUPABASE_KEY
+        }
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error(`Database error: ${response.status}`);
+    }
+
+    products = await response.json();
+
+    renderProducts(products);
+
+  } catch (error) {
+    console.error(error);
+
+    productGrid.innerHTML = `
+      <p class="no-results">
+        Sup-Marine couldn't retrieve pricing right now.
+      </p>
+    `;
+  }
 }
 
-searchForm.addEventListener('submit', e => {
-  e.preventDefault();
-  runSearch(searchInput.value);
+function renderProducts(items) {
+  productGrid.innerHTML = '';
+
+  const validProducts = items.filter(item => item.current_price !== null);
+
+  if (!validProducts.length) {
+    noResults.hidden = false;
+    noResults.textContent = 'No live prices found yet.';
+    return;
+  }
+
+  noResults.hidden = true;
+
+  validProducts
+    .sort((a, b) => Number(a.current_price) - Number(b.current_price))
+    .forEach(item => {
+
+      const badge = item.price_badge || 'Price recorded';
+
+      const card = document.createElement('article');
+      card.className = 'product-card';
+
+      card.innerHTML = `
+        <div class="badge">${badge}</div>
+
+        <div class="product-art">
+          ${item.category ? item.category.substring(0, 4).toUpperCase() : 'SUP'}
+        </div>
+
+        <div class="product-copy">
+
+          <p class="product-type">
+            ${item.category || ''}
+          </p>
+
+          <h3>
+            ${item.brand} ${item.name}
+          </h3>
+
+          <p class="retailer">
+            ${item.retailer}
+            ${item.flavour ? ` · ${item.flavour}` : ''}
+            ${item.pack_size ? ` · ${item.pack_size}` : ''}
+          </p>
+
+          <div class="price-row">
+            <strong>£${Number(item.current_price).toFixed(2)}</strong>
+            <span>Current price</span>
+          </div>
+
+          <div class="price-history">
+            <p>
+              Lowest recorded:
+              <strong>£${Number(item.lowest_recorded_price).toFixed(2)}</strong>
+            </p>
+
+            <p>
+              Highest recorded:
+              <strong>£${Number(item.highest_recorded_price).toFixed(2)}</strong>
+            </p>
+
+            <p>
+              Average:
+              <strong>£${Number(item.average_recorded_price).toFixed(2)}</strong>
+            </p>
+          </div>
+
+          ${
+            item.product_url
+              ? `<a class="deal-btn" href="${item.product_url}" target="_blank" rel="noopener">
+                   View deal
+                 </a>`
+              : ''
+          }
+
+        </div>
+      `;
+
+      productGrid.appendChild(card);
+    });
+}
+
+function searchProducts(term) {
+  const q = term.trim().toLowerCase();
+
+  if (!q) {
+    renderProducts(products);
+    return;
+  }
+
+  const filtered = products.filter(item => {
+    const text = `
+      ${item.brand || ''}
+      ${item.name || ''}
+      ${item.category || ''}
+      ${item.retailer || ''}
+      ${item.flavour || ''}
+    `.toLowerCase();
+
+    return text.includes(q);
+  });
+
+  renderProducts(filtered);
+
+  document
+    .getElementById('deals')
+    .scrollIntoView({ behavior: 'smooth' });
+}
+
+searchForm.addEventListener('submit', event => {
+  event.preventDefault();
+  searchProducts(searchInput.value);
 });
 
 document.querySelectorAll('[data-search]').forEach(button => {
   button.addEventListener('click', () => {
-    const term = button.dataset.search;
-    searchInput.value = term;
-    runSearch(term);
+    searchInput.value = button.dataset.search;
+    searchProducts(button.dataset.search);
   });
 });
 
-document.querySelectorAll('.deal-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    alert('This is a demo deal button. Live retailer links will be connected in the next phase.');
-  });
-});
+loadProducts();
